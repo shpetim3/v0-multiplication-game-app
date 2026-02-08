@@ -1,26 +1,27 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
-import type { Difficulty } from "@/lib/game-utils"
+import type { Difficulty, GameType } from "@/lib/game-utils"
+import { HomeScreen } from "./home-screen"
 import { StartScreen } from "./start-screen"
 import { GameScreen } from "./game-screen"
 import { ResultsScreen } from "./results-screen"
 
-type GameState = "start" | "playing" | "results"
+type AppState = "home" | "start" | "playing" | "results"
+
+const STORAGE_KEY = "meso-duke-luajtur-scores"
 
 export function MultiplicationGame() {
-  const [gameState, setGameState] = useState<GameState>("start")
+  const [appState, setAppState] = useState<AppState>("home")
+  const [selectedGameType, setSelectedGameType] = useState<GameType>("mbledhje")
   const [difficulty, setDifficulty] = useState<Difficulty>("fillestar")
   const [finalScore, setFinalScore] = useState(0)
-  const [highScores, setHighScores] = useState<Record<Difficulty, number>>({
-    fillestar: 0,
-    mesatar: 0,
-  })
+  const [highScores, setHighScores] = useState<Record<string, number>>({})
 
   // Load high scores from localStorage on mount
   useEffect(() => {
     try {
-      const saved = localStorage.getItem("shumezo-highscores")
+      const saved = localStorage.getItem(STORAGE_KEY)
       if (saved) {
         setHighScores(JSON.parse(saved))
       }
@@ -30,13 +31,14 @@ export function MultiplicationGame() {
   }, [])
 
   const saveHighScore = useCallback(
-    (diff: Difficulty, score: number) => {
+    (gameType: GameType, diff: Difficulty, score: number) => {
+      const key = `${gameType}-${diff}`
       const updated = { ...highScores }
-      if (score > updated[diff]) {
-        updated[diff] = score
+      if (score > (updated[key] || 0)) {
+        updated[key] = score
         setHighScores(updated)
         try {
-          localStorage.setItem("shumezo-highscores", JSON.stringify(updated))
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(updated))
         } catch {
           // Silently ignore storage errors
         }
@@ -45,34 +47,57 @@ export function MultiplicationGame() {
     [highScores],
   )
 
+  const handleSelectGame = useCallback((gameType: GameType) => {
+    setSelectedGameType(gameType)
+    setAppState("start")
+  }, [])
+
   const handleStart = useCallback((diff: Difficulty) => {
     setDifficulty(diff)
-    setGameState("playing")
+    setAppState("playing")
   }, [])
 
   const handleFinish = useCallback(
     (score: number) => {
       setFinalScore(score)
-      saveHighScore(difficulty, score)
-      setGameState("results")
+      saveHighScore(selectedGameType, difficulty, score)
+      setAppState("results")
     },
-    [difficulty, saveHighScore],
+    [selectedGameType, difficulty, saveHighScore],
   )
 
   const handlePlayAgain = useCallback(() => {
-    setGameState("start")
+    setAppState("start")
+  }, [])
+
+  const handleGoHome = useCallback(() => {
+    setAppState("home")
   }, [])
 
   const handleBack = useCallback(() => {
-    setGameState("start")
-  }, [])
+    if (appState === "playing") {
+      setAppState("start")
+    } else {
+      setAppState("home")
+    }
+  }, [appState])
 
-  switch (gameState) {
+  switch (appState) {
+    case "home":
+      return <HomeScreen onSelectGame={handleSelectGame} />
     case "start":
-      return <StartScreen onStart={handleStart} highScores={highScores} />
+      return (
+        <StartScreen
+          gameType={selectedGameType}
+          onStart={handleStart}
+          onBack={handleGoHome}
+          highScores={highScores}
+        />
+      )
     case "playing":
       return (
         <GameScreen
+          gameType={selectedGameType}
           difficulty={difficulty}
           onFinish={handleFinish}
           onBack={handleBack}
@@ -80,7 +105,12 @@ export function MultiplicationGame() {
       )
     case "results":
       return (
-        <ResultsScreen score={finalScore} onPlayAgain={handlePlayAgain} />
+        <ResultsScreen
+          score={finalScore}
+          gameType={selectedGameType}
+          onPlayAgain={handlePlayAgain}
+          onGoHome={handleGoHome}
+        />
       )
   }
 }

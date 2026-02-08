@@ -1,26 +1,39 @@
 "use client"
 
 import { useState, useCallback, useMemo } from "react"
-import type { Difficulty } from "@/lib/game-utils"
-import { generateQuestion, TOTAL_QUESTIONS, DIFFICULTY_LABELS } from "@/lib/game-utils"
+import type { Difficulty, GameType } from "@/lib/game-utils"
+import {
+  generateQuestion,
+  TOTAL_QUESTIONS,
+  GAME_TYPE_CONFIG,
+  DIFFICULTY_LABELS,
+} from "@/lib/game-utils"
 import { ProgressBar } from "./progress-bar"
 import { QuestionCard } from "./question-card"
 
 interface GameScreenProps {
+  gameType: GameType
   difficulty: Difficulty
   onFinish: (score: number) => void
   onBack: () => void
 }
 
-export function GameScreen({ difficulty, onFinish, onBack }: GameScreenProps) {
+export function GameScreen({
+  gameType,
+  difficulty,
+  onFinish,
+  onBack,
+}: GameScreenProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [score, setScore] = useState(0)
   const [questionKey, setQuestionKey] = useState(0)
 
+  const config = GAME_TYPE_CONFIG[gameType]
+
   const question = useMemo(
-    () => generateQuestion(difficulty),
+    () => generateQuestion(gameType, difficulty),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [difficulty, questionKey],
+    [gameType, difficulty, questionKey],
   )
 
   const handleAnswer = useCallback(
@@ -39,6 +52,13 @@ export function GameScreen({ difficulty, onFinish, onBack }: GameScreenProps) {
     [score, currentIndex, onFinish],
   )
 
+  const diffLabel =
+    gameType === "rrokje"
+      ? difficulty === "fillestar"
+        ? "Fillestar"
+        : "Mesatar"
+      : DIFFICULTY_LABELS[difficulty]
+
   return (
     <div className="flex min-h-[100dvh] flex-col px-4 py-6 md:py-8">
       <div className="mx-auto w-full max-w-md">
@@ -49,11 +69,18 @@ export function GameScreen({ difficulty, onFinish, onBack }: GameScreenProps) {
             className="rounded-xl bg-card px-3 py-2 text-sm font-bold text-muted-foreground transition-all hover:bg-muted active:scale-95 border border-border"
             aria-label="Kthehu prapa"
           >
-            {"← Kthehu"}
+            {"\u2190 Kthehu"}
           </button>
-          <span className="rounded-xl bg-card px-3 py-2 text-sm font-bold text-foreground border border-border">
-            {DIFFICULTY_LABELS[difficulty]}
-          </span>
+          <div className="flex items-center gap-2">
+            <span
+              className={`inline-flex h-7 w-7 items-center justify-center rounded-lg text-xs font-extrabold ${config.colorClass}`}
+            >
+              {config.emoji}
+            </span>
+            <span className="rounded-xl bg-card px-3 py-2 text-sm font-bold text-foreground border border-border">
+              {diffLabel}
+            </span>
+          </div>
         </div>
 
         {/* Progress */}
