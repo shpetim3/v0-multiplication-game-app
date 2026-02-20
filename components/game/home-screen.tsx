@@ -53,10 +53,10 @@ export function HomeScreen({ onSelectGame }: HomeScreenProps) {
             1+1
           </div>
           <h1 className="mb-2 text-3xl font-extrabold tracking-tight text-foreground md:text-4xl text-balance">
-            Meso Duke Luajtur!
+            Mëso Duke Luajtur!
           </h1>
           <p className="text-base font-semibold text-muted-foreground text-pretty">
-            Zgjidh lenden qe deshiron te mesosh
+            Zgjidh lëndën që dëshiron të mësosh
           </p>
         </div>
 
@@ -113,7 +113,7 @@ export function HomeScreen({ onSelectGame }: HomeScreenProps) {
         {/* Footer info */}
         <div className="mt-8 rounded-2xl bg-card p-4 text-center shadow-sm border border-border">
           <p className="text-sm font-semibold text-muted-foreground">
-            Per femije 6-10 vjec  |  10 pyetje per loje
+            Për fëmijë 6-10 vjeç  |  10 pyetje për lojë
           </p>
         </div>
       </div>

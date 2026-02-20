@@ -34,36 +34,36 @@ export const GAME_TYPE_CONFIG: Record<GameType, GameTypeConfig> = {
     label: "Mbledhja",
     emoji: "+",
     colorClass: "bg-accent text-accent-foreground",
-    description: "Meso mbledhjen e numrave",
+    description: "Mëso mbledhjen e numrave",
   },
   zbritje: {
     label: "Zbritja",
     emoji: "-",
     colorClass: "bg-secondary text-secondary-foreground",
-    description: "Meso zbritjen e numrave",
+    description: "Mëso zbritjen e numrave",
   },
   shumezim: {
-    label: "Shumezimi",
+    label: "Shumëzimi",
     emoji: "\u00d7",
     colorClass: "bg-primary text-primary-foreground",
-    description: "Meso tabelen e shumezimit",
+    description: "Mëso tabelën e shumëzimit",
   },
   pjestim: {
-    label: "Pjesetimi",
+    label: "Pjesëtimi",
     emoji: "\u00f7",
     colorClass: "bg-[hsl(280,60%,55%)] text-[hsl(0,0%,100%)]",
-    description: "Meso pjesetimin e numrave",
+    description: "Mëso pjesëtimin e numrave",
   },
   rrokje: {
     label: "Rrokjet",
     emoji: "Aa",
     colorClass: "bg-[hsl(340,65%,55%)] text-[hsl(0,0%,100%)]",
-    description: "Meso rrokjet e gjuhes shqipe",
+    description: "Mëso rrokjet e gjuhës shqipe",
   },
 }
 
 export const DIFFICULTY_LABELS: Record<Difficulty, string> = {
-  fillestar: "Fillestar (1-5)",
+  fillestar: "Fillëstar (1-5)",
   mesatar: "Mesatar (1-10)",
 }
 
@@ -81,59 +81,59 @@ interface SyllableWord {
 
 const SYLLABLE_WORDS_EASY: SyllableWord[] = [
   { word: "lule", rrokje: ["lu", "le"] },
-  { word: "dere", rrokje: ["de", "re"] },
-  { word: "dore", rrokje: ["do", "re"] },
-  { word: "buke", rrokje: ["bu", "ke"] },
-  { word: "pule", rrokje: ["pu", "le"] },
-  { word: "tope", rrokje: ["to", "pe"] },
-  { word: "lope", rrokje: ["lo", "pe"] },
-  { word: "mace", rrokje: ["ma", "ce"] },
-  { word: "molle", rrokje: ["mo", "lle"] },
-  { word: "shtepi", rrokje: ["shte", "pi"] },
-  { word: "liber", rrokje: ["li", "ber"] },
-  { word: "peme", rrokje: ["pe", "me"] },
-  { word: "dimer", rrokje: ["di", "mer"] },
-  { word: "vere", rrokje: ["ve", "re"] },
-  { word: "drite", rrokje: ["dri", "te"] },
-  { word: "fushe", rrokje: ["fu", "she"] },
+  { word: "derë", rrokje: ["de", "rë"] },
+  { word: "dorë", rrokje: ["do", "rë"] },
+  { word: "bukë", rrokje: ["bu", "kë"] },
+  { word: "pulë", rrokje: ["pu", "lë"] },
+  { word: "topë", rrokje: ["to", "pë"] },
+  { word: "lopë", rrokje: ["lo", "pë"] },
+  { word: "macë", rrokje: ["ma", "cë"] },
+  { word: "mollë", rrokje: ["mo", "llë"] },
+  { word: "shtëpi", rrokje: ["shtë", "pi"] },
+  { word: "libër", rrokje: ["li", "bër"] },
+  { word: "pemë", rrokje: ["pe", "më"] },
+  { word: "dimër", rrokje: ["di", "mër"] },
+  { word: "verë", rrokje: ["ve", "rë"] },
+  { word: "dritë", rrokje: ["dri", "të"] },
+  { word: "fushë", rrokje: ["fu", "shë"] },
   { word: "lumi", rrokje: ["lu", "mi"] },
   { word: "mali", rrokje: ["ma", "li"] },
   { word: "goja", rrokje: ["go", "ja"] },
   { word: "babi", rrokje: ["ba", "bi"] },
   { word: "mami", rrokje: ["ma", "mi"] },
-  { word: "nena", rrokje: ["ne", "na"] },
-  { word: "pune", rrokje: ["pu", "ne"] },
-  { word: "kenge", rrokje: ["ke", "nge"] },
+  { word: "nëna", rrokje: ["në", "na"] },
+  { word: "punë", rrokje: ["pu", "në"] },
+  { word: "këngë", rrokje: ["kë", "ngë"] },
   { word: "miku", rrokje: ["mi", "ku"] },
   { word: "dielli", rrokje: ["die", "lli"] },
-  { word: "hena", rrokje: ["he", "na"] },
+  { word: "hëna", rrokje: ["hë", "na"] },
   { word: "ylli", rrokje: ["y", "lli"] },
   { word: "rruga", rrokje: ["rru", "ga"] },
-  { word: "blete", rrokje: ["ble", "te"] },
+  { word: "bletë", rrokje: ["ble", "të"] },
 ]
 
 const SYLLABLE_WORDS_MEDIUM: SyllableWord[] = [
   ...SYLLABLE_WORDS_EASY,
   { word: "dritare", rrokje: ["dri", "ta", "re"] },
-  { word: "femije", rrokje: ["fe", "mi", "je"] },
-  { word: "fluture", rrokje: ["flu", "tu", "re"] },
-  { word: "makine", rrokje: ["ma", "ki", "ne"] },
-  { word: "limone", rrokje: ["li", "mo", "ne"] },
-  { word: "banane", rrokje: ["ba", "na", "ne"] },
-  { word: "muzike", rrokje: ["mu", "zi", "ke"] },
+  { word: "fëmijë", rrokje: ["fë", "mi", "jë"] },
+  { word: "fluturë", rrokje: ["flu", "tu", "rë"] },
+  { word: "makinë", rrokje: ["ma", "ki", "në"] },
+  { word: "limonë", rrokje: ["li", "mo", "në"] },
+  { word: "bananë", rrokje: ["ba", "na", "në"] },
+  { word: "muzikë", rrokje: ["mu", "zi", "kë"] },
   { word: "familje", rrokje: ["fa", "mi", "lje"] },
-  { word: "mesues", rrokje: ["me", "su", "es"] },
-  { word: "nxenes", rrokje: ["nxe", "nes"] },
-  { word: "shkolle", rrokje: ["shko", "lle"] },
-  { word: "kafshe", rrokje: ["ka", "fshe"] },
-  { word: "kopesht", rrokje: ["ko", "pesht"] },
-  { word: "detyre", rrokje: ["de", "ty", "re"] },
+  { word: "mësues", rrokje: ["më", "su", "es"] },
+  { word: "nxënës", rrokje: ["nxë", "nës"] },
+  { word: "shkollë", rrokje: ["shko", "llë"] },
+  { word: "kafshë", rrokje: ["ka", "fshë"] },
+  { word: "kopësht", rrokje: ["ko", "pësht"] },
+  { word: "detyrë", rrokje: ["de", "ty", "rë"] },
   { word: "abetare", rrokje: ["a", "be", "ta", "re"] },
-  { word: "reshira", rrokje: ["re", "shi", "ra"] },
-  { word: "vegime", rrokje: ["ve", "gi", "me"] },
+  { word: "rëshira", rrokje: ["rë", "shi", "ra"] },
+  { word: "vëgimë", rrokje: ["vë", "gi", "më"] },
   { word: "kalemi", rrokje: ["ka", "le", "mi"] },
   { word: "korizi", rrokje: ["ko", "ri", "zi"] },
-  { word: "beteje", rrokje: ["be", "te", "je"] },
+  { word: "betejë", rrokje: ["be", "te", "jë"] },
 ]
 
 // --- Helpers ---
@@ -312,7 +312,7 @@ function generateSyllableQuestion(difficulty: Difficulty): SyllableQuestion {
     return {
       type: "syllable",
       word: wordData.word,
-      prompt: "Sa rrokje ka kjo fjale?",
+      prompt: "Sa rrokje ka kjo fjalë?",
       correctAnswer,
       options: shuffle([correctAnswer, ...Array.from(wrongOptions)]),
     }
@@ -331,7 +331,7 @@ function generateSyllableQuestion(difficulty: Difficulty): SyllableQuestion {
     return {
       type: "syllable",
       word: wordData.word,
-      prompt: "Si ndahet ne rrokje?",
+      prompt: "Si ndahet në rrokje?",
       correctAnswer: correctBreakdown,
       options: shuffle([correctBreakdown, ...Array.from(wrongOptions)]),
     }
@@ -362,10 +362,10 @@ export function generateQuestion(
 
 export function getEncouragement(): string {
   const messages = [
-    "Bravo! Ti je i/e shkelqyer!",
-    "Fantastike! Vazhdo keshtu!",
-    "E mrekullueshme! Je shume i/e zgjuar!",
-    "Sakte! Ti je yll!",
+    "Bravo! Ti je i/e shkëlqyer!",
+    "Fantastikë! Vazhdo kështu!",
+    "E mrekullueshme! Je shumë i/e zgjuar!",
+    "Saktë! Ti je yll!",
     "Perfekt! Vazhdo!",
   ]
   return messages[Math.floor(Math.random() * messages.length)]
@@ -373,10 +373,10 @@ export function getEncouragement(): string {
 
 export function getRetryMessage(): string {
   const messages = [
-    "Provo perseri! Ti mundesh!",
-    "Pothuajse! Provo edhe nje here!",
-    "Mos u dorezo! Provo perseri!",
-    "Afer ishe! Provo edhe njehere!",
+    "Provo përsëri! Ti mundesh!",
+    "Pothuajse! Provo edhe një herë!",
+    "Mos u dorëzo! Provo përsëri!",
+    "Afër ishe! Provo edhe njëherë!",
   ]
   return messages[Math.floor(Math.random() * messages.length)]
 }

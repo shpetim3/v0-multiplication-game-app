@@ -18,34 +18,34 @@ function getResultMessage(
     return {
       emoji: "\u{1f3c6}",
       title: "Perfekt!",
-      subtitle: "Te gjitha sakte! Je matematikan/e e vertete!",
+      subtitle: "Të gjitha saktë! Je matematikan/e e vërtetë!",
     }
   }
   if (ratio >= 0.8) {
     return {
       emoji: "\u{1f31f}",
-      title: "Shkelqyeshem!",
-      subtitle: "Pothuajse perfekt! Vazhdo keshtu!",
+      title: "Shkëlqyeshëm!",
+      subtitle: "Pothuajse perfekt! Vazhdo kështu!",
     }
   }
   if (ratio >= 0.6) {
     return {
       emoji: "\u{1f44f}",
-      title: "Shume mire!",
-      subtitle: "Je duke bere progres te madh!",
+      title: "Shumë mirë!",
+      subtitle: "Je duke bërë progres të madh!",
     }
   }
   if (ratio >= 0.4) {
     return {
       emoji: "\u{1f4aa}",
-      title: "Mire!",
-      subtitle: "Vazhdo te ushtrohesh, po permirësohesh!",
+      title: "Mirë!",
+      subtitle: "Vazhdo të ushtrohesh, po përmirësohesh!",
     }
   }
   return {
     emoji: "\u{1f331}",
-    title: "Fillim i mire!",
-    subtitle: "Provo perseri, do te behesh me i/e mire!",
+    title: "Fillim i mirë!",
+    subtitle: "Provo përsëri, do të bëhesh më i/e mirë!",
   }
 }
 
@@ -155,13 +155,13 @@ export function ResultsScreen({
             onClick={onPlayAgain}
             className="w-full rounded-2xl bg-primary px-6 py-5 text-xl font-extrabold text-primary-foreground transition-all duration-200 hover:brightness-110 active:scale-95"
           >
-            {"\u{1f504}"} Luaj Perseri
+            {"\u{1f504}"} Luaj Përsëri
           </button>
           <button
             onClick={onGoHome}
             className="w-full rounded-2xl bg-card px-6 py-4 text-base font-bold text-muted-foreground transition-all duration-200 hover:bg-muted active:scale-95 border border-border"
           >
-            {"\u2190"} Kthehu ne Kryefaqe
+            {"\u2190"} Kthehu në Kryefaqe
           </button>
         </div>
       </div>

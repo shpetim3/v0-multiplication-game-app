@@ -56,7 +56,7 @@ export function QuestionCard({ question, onAnswer }: QuestionCardProps) {
         {question.type === "math" ? (
           <>
             <p className="mb-1 text-sm font-bold text-muted-foreground uppercase tracking-wide">
-              Sa ben?
+              Sa bën?
             </p>
             <div className="flex items-center justify-center gap-2 text-foreground">
               <span className="text-5xl font-extrabold md:text-6xl">
@@ -122,7 +122,7 @@ export function QuestionCard({ question, onAnswer }: QuestionCardProps) {
                 ${stateClasses}
                 ${selected === null ? "animate-pulse-glow" : ""}
               `}
-              aria-label={`Pergjigja ${option}`}
+              aria-label={`Përgjigjja ${option}`}
             >
               {option}
             </button>
@@ -149,7 +149,7 @@ export function QuestionCard({ question, onAnswer }: QuestionCardProps) {
           {feedback.message}
           {feedback.type === "wrong" && (
             <p className="mt-1 text-base font-semibold">
-              Pergjigja e sakte: {question.correctAnswer}
+              Përgjigjja e saktë: {question.correctAnswer}
             </p>
           )}
         </div>

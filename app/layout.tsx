@@ -6,8 +6,8 @@ import './globals.css'
 const nunito = Nunito({ subsets: ['latin'], variable: '--font-nunito' })
 
 export const metadata: Metadata = {
-  title: 'Meso Duke Luajtur - Matematike dhe Gjuhe Shqipe',
-  description: 'Loje edukative per femije 6-10 vjec: mbledhje, zbritje, shumezim, pjesetim dhe rrokje te gjuhes shqipe.',
+  title: 'Mëso Duke Luajtur - Matematikë dhe Gjuhë Shqipe',
+  description: 'Lojë edukative për fëmijë 6-10 vjeç: mbledhje, zbritje, shumëzim, pjesëtim dhe rrokje të gjuhës shqipe.',
 }
 
 export const viewport: Viewport = {

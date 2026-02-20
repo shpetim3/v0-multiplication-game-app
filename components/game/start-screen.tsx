@@ -26,8 +26,8 @@ export function StartScreen({
   const getDifficultyLabel = (diff: Difficulty): string => {
     if (gameType === "rrokje") {
       return diff === "fillestar"
-        ? "Fillestar (fjale te lehta)"
-        : "Mesatar (fjale te veshtira)"
+        ? "Fillëstar (fjalë të lehta)"
+        : "Mesatar (fjalë të vështira)"
     }
     return DIFFICULTY_LABELS[diff]
   }
@@ -39,7 +39,7 @@ export function StartScreen({
         <button
           onClick={onBack}
           className="mb-6 rounded-xl bg-card px-3 py-2 text-sm font-bold text-muted-foreground transition-all hover:bg-muted active:scale-95 border border-border"
-          aria-label="Kthehu ne kryefaqe"
+          aria-label="Kthehu në kryefaqe"
         >
           {"\u2190 Kryefaqja"}
         </button>
@@ -113,15 +113,15 @@ export function StartScreen({
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li className="flex items-start gap-2">
               <span className="mt-0.5 text-lg">{"\u{1f3af}"}</span>
-              <span>Zgjidh pergjigjen e sakte nga 4 mundesite</span>
+              <span>Zgjidh përgjigjen e saktë nga 4 mundësitë</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="mt-0.5 text-lg">{"\u{1f4ca}"}</span>
-              <span>{TOTAL_QUESTIONS} pyetje ne cdo loje</span>
+              <span>{TOTAL_QUESTIONS} pyetje në çdo lojë</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="mt-0.5 text-lg">{"\u{1f3c6}"}</span>
-              <span>Mblidh sa me shume pike!</span>
+              <span>Mblidh sa më shumë pikë!</span>
             </li>
           </ul>
         </div>

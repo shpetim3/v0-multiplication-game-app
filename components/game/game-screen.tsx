@@ -55,7 +55,7 @@ export function GameScreen({
   const diffLabel =
     gameType === "rrokje"
       ? difficulty === "fillestar"
-        ? "Fillestar"
+        ? "Fillëstar"
         : "Mesatar"
       : DIFFICULTY_LABELS[difficulty]
 
