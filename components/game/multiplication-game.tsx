@@ -6,8 +6,9 @@ import { HomeScreen } from "./home-screen"
 import { StartScreen } from "./start-screen"
 import { GameScreen } from "./game-screen"
 import { ResultsScreen } from "./results-screen"
+import { AbetarjaBook } from "./abetarja-book"
 
-type AppState = "home" | "start" | "playing" | "results"
+type AppState = "home" | "start" | "playing" | "results" | "abetarja"
 
 const STORAGE_KEY = "meso-duke-luajtur-scores"
 
@@ -74,6 +75,10 @@ export function MultiplicationGame() {
     setAppState("home")
   }, [])
 
+  const handleOpenAbetarja = useCallback(() => {
+    setAppState("abetarja")
+  }, [])
+
   const handleBack = useCallback(() => {
     if (appState === "playing") {
       setAppState("start")
@@ -84,7 +89,7 @@ export function MultiplicationGame() {
 
   switch (appState) {
     case "home":
-      return <HomeScreen onSelectGame={handleSelectGame} />
+      return <HomeScreen onSelectGame={handleSelectGame} onOpenAbetarja={handleOpenAbetarja} />
     case "start":
       return (
         <StartScreen
@@ -112,5 +117,7 @@ export function MultiplicationGame() {
           onGoHome={handleGoHome}
         />
       )
+    case "abetarja":
+      return <AbetarjaBook onBack={handleGoHome} />
   }
 }
