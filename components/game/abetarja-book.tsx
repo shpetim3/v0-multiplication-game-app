@@ -153,15 +153,7 @@ export function AbetarjaBook({ onBack }: AbetarjaBookProps) {
               </p>
             </div>
 
-            {/* Handwriting line */}
-            {page.handwriting && (
-              <div className="rounded-xl bg-[hsl(45,93%,96%)] p-3 border border-[hsl(45,60%,82%)]">
-                <p className="text-xs font-semibold text-muted-foreground mb-1">Shkrimi:</p>
-                <p className="font-mono text-base text-foreground tracking-wide italic">
-                  {page.handwriting}
-                </p>
-              </div>
-            )}
+
           </div>
 
           {/* Page curl decoration */}
