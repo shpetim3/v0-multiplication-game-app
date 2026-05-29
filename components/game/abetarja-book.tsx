@@ -148,7 +148,7 @@ export function AbetarjaBook({ onBack }: AbetarjaBookProps) {
             aria-label="Leximi"
             title="Leximi pa pengesa"
           >
-            {"\u{1F4D6"}"}
+            {"\u{1F4D6}"}
           </button>
         </div>
 
