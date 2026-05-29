@@ -11,6 +11,7 @@ export function AbetarjaBook({ onBack }: AbetarjaBookProps) {
   const [currentPage, setCurrentPage] = useState(0)
   const [direction, setDirection] = useState<"left" | "right" | null>(null)
   const [isAnimating, setIsAnimating] = useState(false)
+  const [isReadingMode, setIsReadingMode] = useState(false)
   const touchStartX = useRef(0)
   const totalPages = ABETARJA_PAGES.length
 
@@ -65,6 +66,65 @@ export function AbetarjaBook({ onBack }: AbetarjaBookProps) {
   const isFirst = currentPage === 0
   const isLast = currentPage === totalPages - 1
 
+  // Reading mode - fullscreen image viewer
+  if (isReadingMode) {
+    return (
+      <div className="fixed inset-0 z-50 flex flex-col bg-black">
+        {/* Image display */}
+        <div className="flex-1 flex items-center justify-center overflow-hidden">
+          <img
+            src={`/images/abetarja/page-${currentPage + 1}.jpg`}
+            alt={`Faqja ${currentPage + 1}`}
+            className="max-h-full max-w-full object-contain"
+          />
+        </div>
+
+        {/* Bottom controls */}
+        <div className="bg-black/80 backdrop-blur-sm px-4 py-3 flex items-center justify-between gap-3">
+          <button
+            onClick={goPrev}
+            disabled={isFirst}
+            className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${
+              isFirst
+                ? "bg-gray-700/50 text-gray-500/50 cursor-not-allowed"
+                : "bg-white/20 text-white hover:bg-white/30"
+            }`}
+          >
+            {"\u2190"} Prapa
+          </button>
+
+          <div className="flex items-center gap-2 text-white text-sm font-medium">
+            <span>{currentPage + 1}</span>
+            <span className="text-white/50">/</span>
+            <span className="text-white/70">{totalPages}</span>
+          </div>
+
+          <button
+            onClick={goNext}
+            disabled={isLast}
+            className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${
+              isLast
+                ? "bg-gray-700/50 text-gray-500/50 cursor-not-allowed"
+                : "bg-white/20 text-white hover:bg-white/30"
+            }`}
+          >
+            Para {"\u2192"}
+          </button>
+        </div>
+
+        {/* Close button */}
+        <div className="absolute top-4 left-4 z-10">
+          <button
+            onClick={() => setIsReadingMode(false)}
+            className="px-4 py-2 rounded-lg bg-white/20 text-white hover:bg-white/30 font-bold transition-all text-sm"
+          >
+            {"\u2715"} Mbyll
+          </button>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="flex min-h-[100dvh] flex-col items-center px-4 py-6 md:py-10">
       <div className="w-full max-w-lg animate-bounce-in">
@@ -82,7 +142,14 @@ export function AbetarjaBook({ onBack }: AbetarjaBookProps) {
               Abetarja e Vjetër
             </h1>
           </div>
-          <div className="w-10" />
+          <button
+            onClick={() => setIsReadingMode(true)}
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-lg font-bold text-primary transition-all hover:bg-primary/20 active:scale-95 border border-primary/20"
+            aria-label="Leximi"
+            title="Leximi pa pengesa"
+          >
+            {"\u{1F4D6"}"}
+          </button>
         </div>
 
         {/* Page counter */}
