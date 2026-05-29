@@ -5,7 +5,6 @@ import { GAME_TYPE_CONFIG } from "@/lib/game-utils"
 
 interface HomeScreenProps {
   onSelectGame: (gameType: GameType) => void
-  onOpenAbetarja: () => void
 }
 
 const GAME_ORDER: GameType[] = [
@@ -44,7 +43,7 @@ const CARD_STYLES: Record<GameType, { bg: string; iconBg: string; border: string
   },
 }
 
-export function HomeScreen({ onSelectGame, onOpenAbetarja }: HomeScreenProps) {
+export function HomeScreen({ onSelectGame }: HomeScreenProps) {
   return (
     <div className="flex min-h-[100dvh] flex-col items-center px-4 py-8 md:py-12">
       <div className="w-full max-w-md animate-bounce-in">
@@ -109,41 +108,6 @@ export function HomeScreen({ onSelectGame, onOpenAbetarja }: HomeScreenProps) {
               </button>
             )
           })}
-
-          {/* Abetarja Card */}
-          <button
-            onClick={onOpenAbetarja}
-            className={`
-              group flex w-full items-center gap-4 rounded-2xl border-2 px-5 py-4
-              text-left transition-all duration-200 active:scale-[0.97]
-              hover:shadow-md hover:-translate-y-0.5
-              bg-[hsl(25,80%,96%)] border-[hsl(25,50%,82%)]
-              animate-fade-in-up
-            `}
-            style={{ animationDelay: `${GAME_ORDER.length * 80}ms` }}
-          >
-            {/* Icon */}
-            <div
-              className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl text-2xl font-extrabold shadow-sm transition-transform duration-200 group-hover:scale-110 bg-[hsl(25,70%,50%)] text-[hsl(0,0%,100%)]"
-            >
-              Ab
-            </div>
-
-            {/* Text */}
-            <div className="min-w-0 flex-1">
-              <h2 className="text-lg font-extrabold text-foreground">
-                Abetarja
-              </h2>
-              <p className="text-sm font-medium text-muted-foreground">
-                Shfleto Abetaren e vjetër shqipe
-              </p>
-            </div>
-
-            {/* Arrow */}
-            <div className="shrink-0 text-lg text-muted-foreground transition-transform duration-200 group-hover:translate-x-1">
-              {"\u203A"}
-            </div>
-          </button>
         </div>
 
         {/* Footer info */}
